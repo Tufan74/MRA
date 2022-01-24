@@ -78,7 +78,9 @@ public class MD_Adapter implements IMovieDatabase {
 	*/
 	
 
-	//Check if rating already exist
+	//Check if rating already exist   
+	//	------------------------------- NOT FINISHED ------------------------ need to fix
+	
 		public boolean check_rate(int rating, String uid, String mid, String comment) {
 
 			// Declare necessary SQL query.
