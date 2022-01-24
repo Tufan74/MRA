@@ -83,7 +83,17 @@
     <servlet-name>user_servlet</servlet-name>
     <url-pattern>/usergui</url-pattern>
   </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ruser_servlet</servlet-name>
+    <servlet-class>servlets.RUserGUIrateMovie</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ruser_servlet</servlet-name>
+    <url-pattern>/rusergui</url-pattern>
+  </servlet-mapping>
   
+
   <security-constraint>
     <web-resource-collection>
       <web-resource-name>FreeMarker MVC Views</web-resource-name>
