@@ -66,7 +66,7 @@ public class MD_Adapter implements IMovieDatabase {
 		 
 }
 	
-	
+	/*
 	public boolean check_rate(int rating, String uid, String mid, String comment){
 		 if(rating == 0 & comment == ""){ 
 			 return true;
@@ -75,6 +75,38 @@ public class MD_Adapter implements IMovieDatabase {
 			 return false;
 		 
 		}
+	*/
+	
+
+	//Check if rating already exist
+		public boolean check_rate(int rating, String uid, String mid, String comment) {
+
+			// Declare necessary SQL query.
+			String queryMD = "SELECT FROM mydb01.rate WHERE rating=? AND uid=?";
+
+			// query data.
+			try (Connection connection = DriverManager
+					.getConnection(
+							"jdbc:" + Configuration.getType() + "://" + Configuration.getServer() + ":"
+									+ Configuration.getPort() + "/" + Configuration.getDatabase(),
+							Configuration.getUser(), Configuration.getPassword())) {
+				try (PreparedStatement psSelect = connection.prepareStatement(queryMD)) {
+					psSelect.setInt(1, rating);
+					psSelect.setString(2, uid);
+					psSelect.setString(3, mid);
+					psSelect.setString(4, comment);
+					try (ResultSet rs = psSelect.executeQuery()) {
+						return rs.next();
+					}
+				}
+			} catch (Exception e) {
+				e.printStackTrace();
+				return false;
+			}
+		}
+		
+	
+	
 	
 	
 	
