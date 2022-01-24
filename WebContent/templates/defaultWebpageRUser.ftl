@@ -6,22 +6,22 @@
 	<fieldset id="rate">
 		<legend>Required Information</legend>
 		<div>
-			<label>name</label>
+			<label>rating</label>
 			<input type="text" name="rating" >
 	    </div>
 
 		<div>
-			<label> age</label>
+			<label>uid (Username)</label>
 			<input type="text" name="uid" >
 	    </div>
 
 		<div>
-			<label>email</label>
+			<label>mid (Movie)</label>
 			<input type="text" name="mid">
 	    </div>
 	    
 	    <div>
-			<label>email</label>
+			<label>comment</label>
 			<input type="text" name="comment">
 	    </div>
 	    

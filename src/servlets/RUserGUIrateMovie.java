@@ -42,11 +42,9 @@ public class RUserGUIrateMovie extends HttpServlet {
 			String ratingstr = (String) request.getParameter("rating");
 			int rating = Integer.parseInt(ratingstr);
 			
-			String uidstr = (String) request.getParameter("uid");
-			int uid = Integer.parseInt(uidstr);
+			String uid = (String) request.getParameter("uid");
 			
-			String midstr = (String) request.getParameter("mid");
-			int mid =Integer.parseInt(midstr);
+			String mid = (String) request.getParameter("mid");
 			
 			String comment = (String) request.getParameter("comment");
 			

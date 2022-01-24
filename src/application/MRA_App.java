@@ -42,12 +42,12 @@ public class MRA_App implements RUCmds, UCmds{
 	 
 	
 	@Override
-	public boolean addRating(int rating, int uid, int mid, String comment) {
+	public boolean addRating(int rating, String uid, String mid, String comment) {
 		boolean success=true; 
 		
 		int ratingSQL = rating;
-		int uidSQL = uid;
-		int midSQL = mid;
+		String uidSQL = uid;
+		String midSQL = mid;
 		String commentSQL = comment;
 		
 		if(MD_Adapter.getInstance().rate(ratingSQL, uidSQL, midSQL, commentSQL)) {

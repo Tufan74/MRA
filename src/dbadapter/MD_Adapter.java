@@ -37,7 +37,7 @@ public class MD_Adapter implements IMovieDatabase {
 	
 	
 	
-	public boolean rate(int rating, int uid, int mid, String comment) {
+	public boolean rate(int rating, String uid, String mid, String comment) {
 		 
 		String sqlInsert = "INSERT INTO mydb01.rate (rating,uid,mid,comment) VALUES (?,?,?,?)";
         
@@ -49,8 +49,8 @@ public class MD_Adapter implements IMovieDatabase {
             
 			try (PreparedStatement ps = connection.prepareStatement(sqlInsert)) {
 				ps.setInt(1, rating);
-				ps.setInt(2, uid);
-				ps.setInt(3, mid);
+				ps.setString(2, uid);
+				ps.setString(3, mid);
 				ps.setString(3, comment);
 				ps.executeUpdate();
 				 
@@ -67,7 +67,7 @@ public class MD_Adapter implements IMovieDatabase {
 }
 	
 	
-	public boolean check_rate(int rating, int uid, int mid, String comment){
+	public boolean check_rate(int rating, String uid, String mid, String comment){
 		 if(rating == 0 & comment == ""){ 
 			 return true;
 			 }
