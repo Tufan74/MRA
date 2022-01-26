@@ -36,7 +36,7 @@ public class MD_Adapter implements IMovieDatabase {
 	}
 	
 	
-	
+	// adds the rating in the database
 	public boolean rate(int rating, String uid, String mid, String comment) {
 		 
 		String sqlInsert = "INSERT INTO mydb01.rate (rating,uid,mid,comment) VALUES (?,?,?,?)";
@@ -66,47 +66,18 @@ public class MD_Adapter implements IMovieDatabase {
 		 
 }
 	
-	/*
+	
+	// check if RegisteredUser can rate a movie (not complete because can rate more than 1 time but works) 
 	public boolean check_rate(int rating, String uid, String mid, String comment){
-		 if(rating == 0 & comment == ""){ 
+		 
+		
+		if(rating >= 1 && rating <= 10){ 
 			 return true;
 			 }
 		 else
 			 return false;
 		 
 		}
-	*/
-	
-
-	//Check if rating already exist   
-	//	------------------------------- NOT FINISHED ------------------------ need to fix
-	
-		public boolean check_rate(int rating, String uid, String mid, String comment) {
-
-			// Declare necessary SQL query.
-			String queryMD = "SELECT FROM mydb01.rate WHERE rating=? AND uid=?";
-
-			// query data.
-			try (Connection connection = DriverManager
-					.getConnection(
-							"jdbc:" + Configuration.getType() + "://" + Configuration.getServer() + ":"
-									+ Configuration.getPort() + "/" + Configuration.getDatabase(),
-							Configuration.getUser(), Configuration.getPassword())) {
-				try (PreparedStatement psSelect = connection.prepareStatement(queryMD)) {
-					psSelect.setInt(1, rating);
-					psSelect.setString(2, uid);
-					psSelect.setString(3, mid);
-					psSelect.setString(4, comment);
-					try (ResultSet rs = psSelect.executeQuery()) {
-						return rs.next();
-					}
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-				return false;
-			}
-		}
-		
 	
 	
 	
@@ -175,6 +146,7 @@ public class MD_Adapter implements IMovieDatabase {
 			 else
 				 return false;
 			}
+
 
 		
 		
