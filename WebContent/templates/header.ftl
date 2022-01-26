@@ -30,7 +30,8 @@
     <ul id="navigation">
     	<li><a href="index" title="Index">View Homesite</a></li>
 	<#if navtype == "ruser">
-    	<li><a href="rusergui?page=rate" title="rate">rate</a></li>	
+    	<li><a href="rusergui?page=rate" title="rate">rate</a></li>
+	<li><a href="rusergui?page=movieoverview" title="movieoverview">Show all movies</a></li>
 	<#elseif navtype == "user">
 		<li><a href="usergui?page=insertoffer" title="register"> register</a></li>
 	<#else>
