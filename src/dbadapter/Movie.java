@@ -7,7 +7,9 @@ public class Movie {
     private String director;
     private Date publishingDate;
     private int mid;
-	private String actors;
+    private String actors;
+    private double averageRate;
+	
     
     public Movie(String title, String director, String actors, Date publishingDate, int mid) {
         this.title = title;
@@ -15,6 +17,12 @@ public class Movie {
         this.actors = actors;
         this.publishingDate = publishingDate;
         this.mid = mid;
+	this.averageRate = 0;
+    }
+	
+    public Movie(String title, String director, Date publishingDate, int mid, String actors, double averageRate) {
+	this(title, director, actors, publishingDate, mid);
+	this.averageRate = averageRate;
     }
     
     public String getTitle() {
@@ -55,5 +63,13 @@ public class Movie {
     
     public void setMid(int mid) {
         this.mid = mid;
+    }
+	
+    public double getAverageRate() {
+	return averageRate;
+    }
+
+    public void setAverageRate(double averageRate) {
+	this.averageRate = averageRate;
     }
 }
