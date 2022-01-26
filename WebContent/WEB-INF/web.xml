@@ -93,6 +93,15 @@
     <url-pattern>/rusergui</url-pattern>
   </servlet-mapping>
   
+   <servlet>
+    <servlet-name>movieoverview</servlet-name>
+    <servlet-class>servlets.RUserGUIMovieOverview</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>movieoverview</servlet-name>
+    <url-pattern>/movieoverview</url-pattern>
+  </servlet-mapping>
+  
 
   <security-constraint>
     <web-resource-collection>
