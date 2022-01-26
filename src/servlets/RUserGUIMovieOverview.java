@@ -18,10 +18,10 @@ public class RUserGUIMovieOverview extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
 		 
-		request.setAttribute("navtype", "user");
 		request.setAttribute("pagetitle", "Movie Overview");
 
 		// Dispatch request to template engine
+		
 		try {
 			List<Movie> movies = MRA_App.getInstance().getMovies();
 			request.setAttribute("movies", movies);
