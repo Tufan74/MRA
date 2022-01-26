@@ -23,7 +23,7 @@ import org.junit.After;
 import junit.framework.TestCase;
 
 
-public class T_AddMovie extends TestCase {
+public class T_MovieOverview extends TestCase {
 
     public ArrayList<Movie> Movie;
     private Movie testM;
@@ -76,12 +76,8 @@ public class T_AddMovie extends TestCase {
     }
 
     @Test
-    public final void testAddMovie(){
-        String title = "Spiderman2022";
-        String director = "Anonymous";
-        String actors = "Random passenger";
-        Date publishingDate = Date.valueOf("26/01/2022");
-        int mid = 1;
+    public final void testMovieOverview(){
+
 
         ArrayList<Movie> movies = MRA_App.getInstance().get_movies();
         
