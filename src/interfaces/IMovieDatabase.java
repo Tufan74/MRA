@@ -1,14 +1,14 @@
 package interfaces;
 
-import datatypes.TimeData;
+import java.util.Date;
 
 public interface IMovieDatabase {
 	
 	public boolean rate(int rating, String uid, String mid, String comment);
 	public boolean check_rate(int rating, String uid, String mid, String comment);
 	
-	public boolean addMovie(String title, String director, String actors, TimeData publishingDate);
-	public boolean checkMovie(String title, TimeData publishingDate);
+	 public boolean addMovie(String title, String director, String actors, Date publishingDate, int mid);
+	 public boolean check_movie(String title, String director, String actors, Date publishingDate, int mid);
 	
 	
 }

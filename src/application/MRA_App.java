@@ -2,9 +2,9 @@ package application;
 
 import dbadapter.UD_Adapter;
 
+import java.util.Date;
 import java.util.List;
 
-import datatypes.TimeData;
 import dbadapter.MD_Adapter;
 import dbadapter.Movie;
 import interfaces.RUCmds;
@@ -58,21 +58,21 @@ public class MRA_App implements RUCmds, UCmds{
 	}
 
 	@Override
-	public boolean forwardAddNewMovie(String title, String director, String actors, TimeData publishingDate)  {
-
-			boolean okfail = false;
-
-			// Parse inputs to correct datatypes
-			try {
-				String titleSQL = title;
-	      String directorSQL = director;
-	      String actorsSQL = actors;
-				okfail = MD_Adapter.getInstance().addMovie(titleSQL, directorSQL, actorsSQL, publishingDate);
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return okfail;
+	public boolean forwardAddNewMovie(String title, String director, String actors, Date publishingDate, int mid) {
+		String titleSQL = title;
+		String directorSQL = director;
+		String actorsSQL = actors;
+		Date publishingDateSQL = publishingDate;
+		int midSQL = mid;
+		
+		if (MD_Adapter.getInstance().addMovie(titleSQL, directorSQL, actorsSQL, publishingDateSQL, midSQL)) {
+			return true;
+		} else {
+			return false;
 		}
+			
+	}
+	
 
 	@Override
 	public List<Movie> getMovies() {
