@@ -4,6 +4,7 @@ import java.util.Date;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 
@@ -13,6 +14,9 @@ import dbadapter.Movie;
 import dbadapter.MD_Adapter;
 import org.junit.Before;
 import org.junit.Test;
+
+import com.mysql.cj.xdevapi.Statement;
+
 import org.junit.After;
 import junit.framework.TestCase;
 
@@ -20,11 +24,11 @@ import junit.framework.TestCase;
 public class T_AddMovie extends TestCase {
 
     public ArrayList<Movie> Movie;
-    private testM;
+    private Movie testM;
 
     @Before
     public void setUp(){
-        private testM;
+        Movie testM;
 
 
         testM = new Movie ("Spiderman", "Sam Raimi", "Tobey Maguire", Date.valueOf("05/03/2002"), 1);
@@ -46,16 +50,16 @@ public class T_AddMovie extends TestCase {
 			try (PreparedStatement psClean = connection.prepareStatement(sqlCleanDB)) {
 				psClean.executeUpdate();
 			}
-			try (PreparedStatement psCreateBooking = connection.prepareStatement(sqlCreateTableMovie)) {
+			try (PreparedStatement psCreateMovie = connection.prepareStatement(sqlCreateTableMovie)) {
 				psCreateMovie.executeUpdate();
 			}
 			try (PreparedStatement psInsertMovie = connection.prepareStatement(sqlInsertMovie)) {
-				psInsertOffer.setString(1, testM.getTitle());
-				psInsertOffer.setString(2, testM.getDirector());
-				psInsertOffer.setString(3, testM.getActors());
-				psInsertOffer.setDate(4, testM.getPublishingDate());
-				psInsertOffer.setInt(5, testM.setMid());
-				psInsertOffer.executeUpdate();
+				psInsertMovie.setString(1, testM.getTitle());
+				psInsertMovie.setString(2, testM.getDirector());
+				psInsertMovie.setString(3, testM.getActors());
+				psInsertMovie.setDate(4, testM.getPublishingDate());
+				psInsertMovie.setInt(5, testM.setMid());
+				psInsertMovie.executeUpdate();
 			}
 			
 		} catch (Exception e) {
@@ -73,9 +77,9 @@ public class T_AddMovie extends TestCase {
 
         ArrayList<Movie> test = MRA_App.getInstance().check_movie(title, director, actors, publishingDate, mid);
         if(test.size() == 0){
-            VRApplication.getInstance().addMovie(title, director, actors, publishingDate, mid);
+            MRA_App.getInstance().forwardAddNewMovie(title, director, actors, publishingDate, mid);
         }
-
+    
         assertTrue(test.size() > 0);
         assertEquals(Movie.size(), MRA_App.getInstance().getAllMovie().size());
     }
