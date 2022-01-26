@@ -126,7 +126,9 @@ public class MD_Adapter implements IMovieDatabase {
 	
 	public List<Movie> get_movies(){
 		List<Movie> movies = new ArrayList<Movie>();
-		String queryMD = "SELECT mid, title, director, actors, publishingDate, avgRate FROM mydb01.movie ORDER BY avgRate DESC";
+		String queryMD = "SELECT m.mid, m.title, m.director, m.actors, m.publishingDate, r.avgRate "
+				+ "FROM mydb01.movie m, (select mid, case when count(rate) > 0 then avg(rate) else 0 end as avgRate from mydb01.rate group by mid) r "
+				+ "where r.mid = m.mid ORDER BY r.avgRate DESC";
 		
 		try (Connection connection = DriverManager
 				.getConnection(
