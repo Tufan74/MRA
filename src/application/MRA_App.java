@@ -76,8 +76,7 @@ public class MRA_App implements RUCmds, UCmds{
 
 	@Override
 	public List<Movie> getMovies() {
-		// TODO Auto-generated method stub
-		return null;
+		return MD_Adapter.getInstance().get_movies();
 	}
 		
 		
