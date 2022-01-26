@@ -122,6 +122,36 @@ public class MD_Adapter implements IMovieDatabase {
 		else
 			return false;
 	}
+	
+		public List<Movie> get_movies(){
+		List<Movie> movies = new ArrayList<Movie>();
+		String queryMD = "SELECT mid, title, director, actors, publishingDate, avgRate FROM mydb01.movie";
+		
+		try (Connection connection = DriverManager
+				.getConnection(
+						"jdbc:" + Configuration.getType() + "://" + Configuration.getServer() + ":"
+								+ Configuration.getPort() + "/" + Configuration.getDatabase(),
+						Configuration.getUser(), Configuration.getPassword())) {
+			PreparedStatement ps = connection.prepareStatement(queryMD);
+
+				try (ResultSet rs = ps.executeQuery()) {
+					while(rs.next()) {
+						Timestamp ts = rs.getTimestamp(4);
+						Date date = new Date(ts.getTime());
+//						TimeData td = new TimeData(time.substring(0, 3), time.substring(5, 6), time.substring(8, 9));
+						Movie movie = new Movie( rs.getString(1), rs.getString(2), date,rs.getInt(0),rs.getString(3), rs.getDouble(5));
+						movies.add(movie);
+					}
+				}
+			}
+		 catch (Exception e) {
+			e.printStackTrace();
+			return null;
+		}
+		
+		return movies;
+		}
+	
 }
 
 
