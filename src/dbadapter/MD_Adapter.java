@@ -123,7 +123,7 @@ public class MD_Adapter implements IMovieDatabase {
 			return false;
 	}
 	
-		public List<Movie> get_movies(){
+	public List<Movie> get_movies(){
 		List<Movie> movies = new ArrayList<Movie>();
 		String queryMD = "SELECT mid, title, director, actors, publishingDate, avgRate FROM mydb01.movie";
 		
@@ -150,7 +150,7 @@ public class MD_Adapter implements IMovieDatabase {
 		}
 		
 		return movies;
-		}
+	}
 	
 }
 
