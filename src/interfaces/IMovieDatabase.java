@@ -3,8 +3,6 @@ package interfaces;
 import java.util.Date;
 import java.util.List;
 
-import dbadapter.Movie;
-
 public interface IMovieDatabase {
 	
 	public boolean rate(int rating, String uid, String mid, String comment);
