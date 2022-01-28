@@ -9,7 +9,6 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import application.MRA_App;
-import datatypes.TimeData;
 import dbadapter.Movie;
 
 public class RUserGUIMovieOverview extends HttpServlet {
@@ -38,3 +37,4 @@ public class RUserGUIMovieOverview extends HttpServlet {
 		doGet(request, response);
 
 	}
+}
